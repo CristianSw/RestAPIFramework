@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestDataBuild {
-    public AddPlace addPlacePayLoad(){
+    public AddPlace addPlacePayLoad(String name, String language, String address){
         AddPlace newPlace = new AddPlace();
         Location location = new Location();
         List<String> types = new ArrayList<String>();
@@ -19,12 +19,12 @@ public class TestDataBuild {
 
         newPlace.setLocation(location);
         newPlace.setAccuracy(50);
-        newPlace.setName("Cristian");
-        newPlace.setAddress("Chisinau");
+        newPlace.setName(name);
+        newPlace.setAddress(address);
         newPlace.setPhone_number("(+373) 79356922");
         newPlace.setTypes(types);
         newPlace.setWebsite("https://rahulshettyacademy.com");
-        newPlace.setLanguage("French-IN");
+        newPlace.setLanguage(language);
         return newPlace;
     }
 }

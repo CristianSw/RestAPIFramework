@@ -17,6 +17,8 @@ import org.example.pojo.Location;
 import org.example.resources.TestDataBuild;
 import org.example.resources.Utils;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,19 +31,18 @@ public class StepDefinition extends Utils {
     RequestSpecification res;
     TestDataBuild tdb = new TestDataBuild();
 
-    @Given("Add place payload")
-    public void add_place_payload() {
+    @Given("Add place payload with {string} {string} {string}")
+    public void add_place_payload_with(String name, String language, String address) throws IOException {
+        res = given()
+                .spec(requestSpecification())
+                .body(tdb.addPlacePayLoad(name,language,address));
+    }
+    @When("User call's {string} with post http request")
+    public void user_call_s_with_post_http_request(String string) {
         responseSpec = new ResponseSpecBuilder()
                 .expectStatusCode(200)
                 .expectContentType(ContentType.JSON)
                 .build();
-
-        res = given()
-                .spec(requestSpecification())
-                .body(tdb.addPlacePayLoad());
-    }
-    @When("User call's {string} with post http request")
-    public void user_call_s_with_post_http_request(String string) {
         response = res.when().post("/maps/api/place/add/json")
                 .then().spec(responseSpec).extract().response();
     }
