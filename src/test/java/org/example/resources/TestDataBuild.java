@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestDataBuild {
-    public AddPlace addPlacePayLoad(String name, String language, String address){
+    public AddPlace addPlacePayLoad(String name, String language, String address) {
         AddPlace newPlace = new AddPlace();
         Location location = new Location();
-        List<String> types = new ArrayList<String>();
+        List<String> types = new ArrayList<>();
         types.add("shoe park");
         types.add("shop");
 
