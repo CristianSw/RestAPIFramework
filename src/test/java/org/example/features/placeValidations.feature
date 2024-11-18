@@ -1,5 +1,5 @@
 Feature: Validating place APIs
-
+@AddPlace
   Scenario Outline: Verify if place is being successfully added using AddPlaceAPI
     Given Add place payload with "<name>" "<language>" "<address>"
     When User call's "addPlaceAPI" with "post" http request
@@ -14,3 +14,9 @@ Feature: Validating place APIs
       | WW   | English  | Balti   |
       | AA   | German   | Berlin  |
       | BB   | French   | Paris   |
+@DeletePlace
+    Scenario: Verify if deletePlaceAPI is working
+      Given Delete Place payload
+      When User call's "deletePlaceAPI" with "delete" http request
+      Then API call is success with 200 status code
+      And "status" in response body is "OK"

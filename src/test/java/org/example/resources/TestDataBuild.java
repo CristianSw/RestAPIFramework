@@ -1,6 +1,7 @@
 package org.example.resources;
 
 import org.example.pojo.AddPlace;
+import org.example.pojo.DeletePlace;
 import org.example.pojo.Location;
 
 import java.util.ArrayList;
@@ -26,5 +27,11 @@ public class TestDataBuild {
         newPlace.setWebsite("https://rahulshettyacademy.com");
         newPlace.setLanguage(language);
         return newPlace;
+    }
+
+    public DeletePlace deletePlacePayloadData(String placeId){
+        DeletePlace placeToDelete = new DeletePlace();
+        placeToDelete.setPlace_id(placeId);
+        return placeToDelete;
     }
 }

@@ -19,11 +19,11 @@ import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
 public class StepDefinition extends Utils {
-    Response response;
+    static Response response;
     ResponseSpecification responseSpec;
     RequestSpecification res;
     TestDataBuild tdb = new TestDataBuild();
-    String placeId;
+    public static String placeId;
 
     @Given("Add place payload with {string} {string} {string}")
     public void add_place_payload_with(String name, String language, String address) throws IOException {
@@ -70,5 +70,11 @@ public class StepDefinition extends Utils {
                 .queryParam("place_id", placeId);
         user_call_s_with_http_request(apiResource, httpMethod);
         assertEquals(name, getJsonPathValue(response, "name"));
+    }
+
+    @Given("Delete Place payload")
+    public void deletePlacePayload() throws IOException {
+        res = given().spec(requestSpecification())
+                .body(tdb.deletePlacePayloadData(placeId));
     }
 }
