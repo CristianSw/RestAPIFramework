@@ -38,7 +38,7 @@ public class Utils {
 
     public String getGlobalProperties(String key) throws IOException {
         Properties properties = new Properties();
-        FileInputStream fis = new FileInputStream("/home/cristian/Development/RestAPIFramework/src/test/java/org/example/resources/global.properties");
+        FileInputStream fis = new FileInputStream("src/test/java/org/example/resources/global.properties");
         properties.load(fis);
         return properties.getProperty(key);
 
